@@ -1,0 +1,64 @@
+name: 'Send email'
+description: 'Sending email composite action'
+inputs:
+  recipients:  
+    description: 'Whom to send an email'
+    required: true
+    default: 'No recipients provided'
+  subject:  
+    description: 'Subject'
+    required: true
+    default: 'No subject provided'
+  body:  
+    description: 'Body of the email'
+    required: true
+    default: ''
+  smtp_url:
+    description: 'SMTP Server URL'
+    required: true
+    default: ''
+  smtp_pass:
+    description: 'SMTP Server Password'
+    required: true
+    default: ''
+  from:
+    description: 'Who send an email'
+    required: true
+    default: ''
+  realname:
+    description: 'Name of the user or company'
+    required: true
+    default: ''
+  attachment:
+    description: 'Add an attachment to your email'
+    required: false
+    default: ''
+  
+runs:
+  using: "composite"
+  steps:
+  
+    - run: |
+          cat << EOF > ~/.muttrc
+
+          set smtp_url = ${{ inputs.smtp_url }}
+          set smtp_pass = ${{ inputs.smtp_pass }}
+          set from = ${{ inputs.from }}
+          set realname = ${{ inputs.realname }}
+
+          EOF
+
+      shell: bash
+    - run: ${{ github.action_path }}/mutt.sh
+      shell: bash
+      env: 
+        RECIPIENTS: ${{ inputs.recipients }}
+        SUBJECT: ${{ inputs.subject }}
+        BODY: ${{ inputs.body }}
+        ATTACHMENT: ${{ inputs.attachment }}
+      
+
+           
+     
+  
+
