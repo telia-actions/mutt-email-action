@@ -50,6 +50,7 @@ parse_arguments() {
     if [[ "${ATTACHMENT}" != "" ]]; then 
         ATTACHMENT="-a "${ATTACHMENT}""
     fi
+
 }
 
 parse_arguments "$@"
