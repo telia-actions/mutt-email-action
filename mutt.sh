@@ -48,7 +48,8 @@ parse_arguments() {
     fi
     
     if [[-f "${RECIPIENTS}"]]; then
-        content of the file to RECIPIENTS
+        CONTENT=$(< $RECIPIENTS)
+        RECIPIENTS=$CONTENT
     fi
 
     if [[ "${ATTACHMENT}" != "" ]]; then 
