@@ -46,6 +46,11 @@ parse_arguments() {
     if [[ -z "${RECIPIENTS}" ]]; then 
         err "email recipients are required"
     fi
+    
+    if [[ -f "${RECIPIENTS}" ]]; then
+        CONTENT=$(< $RECIPIENTS)
+        RECIPIENTS=$CONTENT
+    fi
 
     if [[ "${ATTACHMENT}" != "" ]]; then 
         ATTACHMENT="-a "${ATTACHMENT}""
