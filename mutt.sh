@@ -47,7 +47,7 @@ parse_arguments() {
         err "email recipients are required"
     fi
     
-    if [[-f "${RECIPIENTS}"]]; then
+    if [[ -f "${RECIPIENTS}" ]]; then
         CONTENT=$(< $RECIPIENTS)
         RECIPIENTS=$CONTENT
     fi
