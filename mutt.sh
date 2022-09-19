@@ -50,6 +50,7 @@ parse_arguments() {
     if [[ -f "${RECIPIENTS}" ]]; then
         CONTENT=$(< $RECIPIENTS)
         RECIPIENTS=$CONTENT
+        echo "You inputed a file in to recipients, it contains $RECIPIENTS"
     fi
 
     if [[ "${ATTACHMENT}" != "" ]]; then 
