@@ -16,7 +16,7 @@ Create a workflow `.yml` file in your repositories `.github/workflows` directory
 
 | Input | Description | Required | Example values |
 | :---: | :---: | :---: | :---: |
-| `recipients:` | Comma (`,`) separated list or file of email addresses where message will be sent. | YES | name.surname@example.com |
+| `recipients:` | Comma (`,`) separated list or file containing email addresses. | YES | name.surname@example.com |
 | `subject:` | The subject of the email | YES | My subject |
 | `body:` | Content of the email | YES | The main message |
 | `attachment:` | File which will be sent | NO | ./path/to/attachment |
